@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
-  root "movies#index" #pending main welcome explanation et al
+  root "panel#index" #pending main welcome explanation et al
 
   resources :movies
   # The priority is based upon order of creation: first created -> highest priority.
