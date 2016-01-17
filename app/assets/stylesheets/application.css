@@ -13,3 +13,21 @@
  *= require_tree .
  *= require_self
  */
+// headers
+
+th {
+  white-space: nowrap;
+
+  &.tablesorter-headerAsc:after {
+    content: '\25B2';
+  }
+
+  &.tablesorter-headerDesc:after {
+    content: '\25BC';
+  }
+}
+
+ header#main_menu_bg {
+    magin-top:-10px;
+    background-color: #FF6633;
+}
