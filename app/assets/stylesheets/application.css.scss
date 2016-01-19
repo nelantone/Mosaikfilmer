@@ -15,19 +15,14 @@
  */
 // headers
 
-th {
-  white-space: nowrap;
+@import "font-awesome-sprockets";
+@import "font-awesome";
+@import "bootstrap";
 
-  &.tablesorter-headerAsc:after {
-    content: '\25B2';
-  }
-
-  &.tablesorter-headerDesc:after {
-    content: '\25BC';
-  }
+.start_bg{
+  background-image: url(image-path('start_bg.jpg'));
 }
 
- header#main_menu_bg {
-    magin-top:-10px;
-    background-color: #FF6633;
+.white_bg{
+  background-color: white;
 }

@@ -1,15 +1,20 @@
-<header id="main_menu_bg">
+<header>
 <nav class='navbar navbar-custom navbar-fixed-top'>
   <center>
+    <br>
     <tr>
       <% if user_signed_in? %>
-        <th><%= link_to 'Home',:root %></th>
-        <th><%= link_to 'Movie list', movies_path %></th>
+        <th><%= link_to icon('film'), :root, class: 'btn-xlarge btn-secondfrozen', title: 'Home (Preview)', rel: 'Home (Preview)' %></th>
+        <th></th>
+        <th><%= link_to icon('th-list'), movies_path, class: 'btn-xlarge btn-secondfrozen', title: 'Movie list', rel: 'Movie list' %></th>
+        <th></th>
       <% end %>
       <th><%= image_tag('Flogo.png') %></th>
       <% if user_signed_in? %>
-        <th><%= link_to 'Add New Movie', new_movie_path %></th>
-        <th><%= link_to 'Log out', destroy_user_session_path,:method => :delete %> </th>
+        <th></th>
+        <th><%= link_to icon('star'), new_movie_path, class: 'btn-xlarge btn-secondfrozen', title: 'Add New Movie', rel: 'Add New Movie' %></th>
+        <th></th>
+        <th><%= link_to icon('eject'), destroy_user_session_path, :method => :delete, class: 'btn-xlarge btn-secondfrozen', title: 'Log out', rel: 'Add New Movie' %> </th>
       <% end %>
     </tr>
   </center>
