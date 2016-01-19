@@ -1,15 +1,20 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>MosaikFilmer</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
-<%= render partial: 'layouts/main_menu' %>
-<br><br><br>
-<%= yield %>
-
-</body>
+  <head>
+    <title>MosaikFilmer</title>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <%= render partial: 'layouts/main_menu' %>
+    <br><br><br>
+    <% if user_signed_in? %> <%# Make it more DRY %>
+     <div class= "container">
+        <%= yield %>
+      </div>
+    <% else %>
+      <%= yield %>
+    <% end %>
+  </body>
 </html>

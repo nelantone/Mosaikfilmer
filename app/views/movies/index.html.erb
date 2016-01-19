@@ -4,7 +4,7 @@
 
   <div class="white_bg">
     <center>
-      <table>
+      <table class="movies_table">
         <thead>
           <tr>
             <th>Name</th>
@@ -28,9 +28,9 @@
               <td><%= movie.rating %></td>
               <td><%= movie.opinion %></td>
               <td><%= movie.actors %></td>
-              <td><%= link_to 'Show', movie %></td>
-              <td><%= link_to 'Edit', edit_movie_path(movie) %></td>
-              <td><%= link_to 'Destroy', movie, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              <td><%= link_to icon('eye', 'Show'), movie %></td>
+              <td><%= link_to icon('edit', 'Edit'), edit_movie_path(movie) %></td>
+              <td><%= link_to icon('trash', 'Destroy'), movie, method: :delete, data: { confirm: 'Are you sure?' } %></td>
             </tr>
           <% end %>
         </tbody>
