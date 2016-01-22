@@ -36,6 +36,11 @@
     <%= @movie.actors %>
   </p>
 
+  <p>
+    <strong>Image:</strong><br>
+    <%= image_tag @movie.image_url(:thumb).to_s %>
+  </p>
+
   <%= link_to 'Edit', edit_movie_path(@movie) %> |
   <%= link_to 'Back', movies_path %>
 </body>
