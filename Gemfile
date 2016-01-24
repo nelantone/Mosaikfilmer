@@ -29,6 +29,7 @@ gem 'devise', '~> 3.5', '>= 3.5.3'
 # upload resize view images, managers
 gem 'carrierwave', '~> 0.10.0'
 gem 'rmagick', '~> 2.15', '>= 2.15.4'
+gem 'jquery-tablesorter', '~> 1.20', '>= 1.20.3'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
