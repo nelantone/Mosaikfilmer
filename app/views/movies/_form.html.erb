@@ -40,6 +40,14 @@
     <%= f.text_field :actors %>
   </div>
   <br>
+  <% if f.object[:image].nil? %>
+    No existing images, please add an image via URL or choose image file
+  <% else %>
+    Preview<br>
+    <%= image_tag f.object.image_url(:thumb) %>
+    <br>Add new image and ignore this one.
+  <% end %>
+  <br>
   <div class="field">
     <%= f.label :image %>
     <%= f.file_field :image %>
