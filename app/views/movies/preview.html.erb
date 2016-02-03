@@ -5,10 +5,9 @@
   <center>
     <table class="mosaik_filmer_table">
       <% @movies.in_groups_of(3).each do |group|%>
-        
         <div class="three columns">
         <% group.each do |img| %>
-          <tr><%= link_to (image_tag img.image_url(:thumb).to_s, size: "240x300"), img, title: "\"#{img.name}\", Rating: #{img.rating} " if img %></tr>
+          <tr><%= link_to (image_tag img.image_url(:thumb).to_s, size: "240x300"), img, title: "\"#{img.name}\", Rating: #{img.score} " if img %></tr>
 
         <% end %>
       <% end %>

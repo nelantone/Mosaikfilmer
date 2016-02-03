@@ -17,19 +17,21 @@
   </div>
   <div class="field">
     <%= f.label :category %><br>
-    <%= f.text_field :category %>
+    <% categories = ["Action","Adventure","Animation","Biography","Comedy","Crime","Documentary","Drama","Family","Fantasy","Film-Noir","History","Horror","Music","Musical","Mystery","Romance","Sci-Fi","Sport","Thriller","War","Western" ] %>
+    <%= f.select :category, categories %>
   </div>
   <div class="field">
     <%= f.label :country %><br>
-    <%= f.text_field :country %>
+    <%= f.country_select :country %>
   </div>
   <div class="field">
     <%= f.label :year %><br>
     <%= f.number_field :year %>
   </div>
   <div class="field">
-    <%= f.label :rating %><br>
-    <%= f.text_field :rating %>
+    <%= f.label :score %><br>
+    <% score = [ 0.0, 0.5, 1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0, 4.5, 5.0 ] %>
+    <%= f.select :score, score %>
   </div>
   <div class="field">
     <%= f.label :opinion %><br>

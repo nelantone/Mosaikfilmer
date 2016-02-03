@@ -6,6 +6,8 @@
 
 # Ignore public movie image files
 /public/uploads/movie/image/*
+# Ingore tm pfiles
+/ublic/uploads/*
 
 # Ignore bundler config.
 /.bundle

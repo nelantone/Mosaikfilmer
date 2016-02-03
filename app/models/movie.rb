@@ -7,6 +7,6 @@ class Movie < ActiveRecord::Base
   validates :country, presence: true
   validates :year, format: { with: /\A(19|20)\d{2}\z/,
     message: "please write a correct year"}
-  validates :rating, presence: true, format: { with: /\A-?[0-5]+\.[0-9]+\z/,
-    message: "please write a correct rating (from 0.0 to 5.0)"}
+  validates :score, presence: true, format: { with: /\A-?[0-5]+\.[0-9]+\z/,
+    message: "please write a correct score (from 0.0 to 5.0)"}
 end
