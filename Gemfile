@@ -29,8 +29,10 @@ gem 'devise', '~> 3.5', '>= 3.5.3'
 # upload resize view images, managers
 gem 'carrierwave', '~> 0.10.0'
 gem 'rmagick', '~> 2.15', '>= 2.15.4'
+# To sort tables
 gem 'jquery-tablesorter', '~> 1.20', '>= 1.20.3'
-
+#Rails Fixture Replacement
+gem 'factory_girl_rails'
 # select country in a form
 gem 'country_select', '~> 2.5', '>= 2.5.1'
 
