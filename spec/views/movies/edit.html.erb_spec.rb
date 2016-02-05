@@ -7,7 +7,7 @@ RSpec.describe "movies/edit", type: :view do
       :category => "MyString",
       :country => "MyString",
       :year => 1,
-      :rating => 1.5,
+      :score => 1.5,
       :opinion => "MyString",
       :actors => "MyString"
     ))
@@ -26,7 +26,7 @@ RSpec.describe "movies/edit", type: :view do
 
       assert_select "input#movie_year[name=?]", "movie[year]"
 
-      assert_select "input#movie_rating[name=?]", "movie[rating]"
+      assert_select "input#movie_score[name=?]", "movie[score]"
 
       assert_select "input#movie_opinion[name=?]", "movie[opinion]"
 
