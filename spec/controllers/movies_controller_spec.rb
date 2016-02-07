@@ -34,7 +34,7 @@ RSpec.describe MoviesController, type: :controller do
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
   # MoviesController. Be sure to keep this updated too.
-  let(:valid_session) { {} }
+  let(:valid_session) { { } } ## Pass arguments?`
 
   describe "GET #index" do
     it "assigns all movies as @movies" do
@@ -56,9 +56,10 @@ RSpec.describe MoviesController, type: :controller do
     it "assigns a new movie as @movie" do
       # user = FactoryGirl.create(:user) ##?
       ## Do some helper about...
-      user = double('user')
-      allow(request.env['warden']).to receive(:authenticate!).and_return(user)
-      allow(controller).to receive(:current_user).and_return(user)
+      # user = double('user')
+      # allow(user).to receive(:movies)
+      # allow(request.env['warden']).to receive(:authenticate!).and_return(user)
+      # allow(controller).to receive(:current_user).and_return(user)
       get :new, {}
       expect(assigns(:movie)).to be_a_new(Movie)
     end

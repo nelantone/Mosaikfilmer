@@ -2,15 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "movies/edit", type: :view do
   before(:each) do
-    @movie = assign(:movie, Movie.create!(
-      :name => "MyString",
-      :category => "MyString",
-      :country => "MyString",
-      :year => 1,
-      :score => 1.5,
-      :opinion => "MyString",
-      :actors => "MyString"
-    ))
+    @movie = assign(:movie, FactoryGirl.create(:movie))
   end
 
   it "renders the edit movie form" do
