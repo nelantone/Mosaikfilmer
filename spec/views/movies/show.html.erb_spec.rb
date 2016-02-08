@@ -6,7 +6,7 @@ RSpec.describe "movies/show", type: :view do
       :name => "Name",
       :category => "Category",
       :country => "Country",
-      :year => 1,
+      :year => 2004,
       :score => 1.5,
       :opinion => "Opinion",
       :actors => "Actors"

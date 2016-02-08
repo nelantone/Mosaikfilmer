@@ -7,7 +7,7 @@ RSpec.describe "movies/index", type: :view do
         :name => "Name",
         :category => "Category",
         :country => "Country",
-        :year => 1,
+        :year => 2004,
         :score => 1.5,
         :opinion => "Opinion",
         :actors => "Actors"
@@ -16,7 +16,7 @@ RSpec.describe "movies/index", type: :view do
         :name => "Name",
         :category => "Category",
         :country => "Country",
-        :year => 1,
+        :year => 2004,
         :score => 1.5,
         :opinion => "Opinion",
         :actors => "Actors"
@@ -29,7 +29,7 @@ RSpec.describe "movies/index", type: :view do
     assert_select "tr>td", :text => "Name".to_s, :count => 2
     assert_select "tr>td", :text => "Category".to_s, :count => 2
     assert_select "tr>td", :text => "Country".to_s, :count => 2
-    assert_select "tr>td", :text => 1.to_s, :count => 2
+    assert_select "tr>td", :text => 2004.to_s, :count => 2
     assert_select "tr>td", :text => 1.5.to_s, :count => 2
     assert_select "tr>td", :text => "Opinion".to_s, :count => 2
     assert_select "tr>td", :text => "Actors".to_s, :count => 2
