@@ -43,12 +43,14 @@ gem 'country_select', '~> 2.5', '>= 2.5.1'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+  gem 'pg',             '0.17.1'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
   gem 'rspec-rails', '~>3.0'
   gem 'pry-rails'
+  gem 'database_cleaner', '~> 1.5', '>= 1.5.1'
 end
 
 group :development do
@@ -60,6 +62,5 @@ group :development do
 end
 
 group :production do
-  gem 'pg',             '0.17.1'
   gem 'rails_12factor', '0.0.2'
 end

@@ -69,6 +69,7 @@ GEM
       countries (~> 1.2.0)
       sort_alphabetical (~> 1.0)
     currencies (0.4.2)
+    database_cleaner (1.5.1)
     debug_inspector (0.0.2)
     devise (3.5.6)
       bcrypt (~> 3.0)
@@ -223,6 +224,7 @@ DEPENDENCIES
   carrierwave (~> 0.10.0)
   coffee-rails (~> 4.1.0)
   country_select (~> 2.5, >= 2.5.1)
+  database_cleaner (~> 1.5, >= 1.5.1)
   devise (~> 3.5, >= 3.5.3)
   factory_girl_rails
   font-awesome-sass (~> 4.5)
