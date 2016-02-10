@@ -6,12 +6,12 @@ FactoryGirl.define do
   end
 
   factory :movie do
-    name "MyString"
+    name "Pride and Prejudice and Zombies"
     category "Action"
-    country "Mexico"
-    year 2005
-    score 1.5
-    opinion "MyString"
-    actors "MyString"
+    country "United Kingdom"
+    year 2016
+    score 3.5
+    opinion "Is good! The best part is the Movie name!"
+    actors "Bella Heathcote"
   end
 end

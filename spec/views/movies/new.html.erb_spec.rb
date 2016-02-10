@@ -20,16 +20,15 @@ RSpec.describe "movies/new", type: :view do
 
       assert_select "input#movie_name[name=?]", "movie[name]"
 
-      # assert_select "input#movie_category[name=?]", "movie[category]"
+      assert_select "select#movie_category[name=?]", "movie[category]"
 
-
-      #assert_select "input#movie_country[name=?]", "movie[country]"
+      assert_select "select#movie_country[name=?]", "movie[country]"
 
       assert_select "input#movie_year[name=?]", "movie[year]"
 
-      # assert_select "input#movie_score[name=?]", "movie[score]"
+      assert_select "select#movie_score[name=?]", "movie[score]"
 
-      # assert_select "input#movie_opinion[name=?]", "movie[opinion]"
+      assert_select "textarea#movie_opinion[name=?]", "movie[opinion]"
 
       assert_select "input#movie_actors[name=?]", "movie[actors]"
     end
