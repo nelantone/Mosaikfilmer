@@ -5,7 +5,6 @@ RSpec.describe "movies/index", type: :view do
     @user = FactoryGirl.create(:user)
     sign_in @user
     @movies = assign(:movies, [FactoryGirl.create(:movie), FactoryGirl.create(:movie)])
-    binding.pry
   end
 
   it "renders a list of movies" do
