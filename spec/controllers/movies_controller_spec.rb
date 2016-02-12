@@ -28,12 +28,12 @@ RSpec.describe MoviesController, type: :controller do
   let(:movie) { FactoryGirl.create(:movie) }
   let(:movies) { FactoryGirl.create_list(:movie, 5) }
 
-  # let(:valid_attributes) {
-  #   FactoryGirl.build(:movie).attributes
-  # }
+  let(:valid_attributes) {
+    FactoryGirl.build(:movie).attributes
+  }
 
   let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
+    FactoryGirl.build(:movie, year: 3000, score: 10 ).attributes
   }
 
   # This should return the minimal set of values that should be in the session
@@ -43,11 +43,10 @@ RSpec.describe MoviesController, type: :controller do
 
   describe "GET #index" do
     it "assigns all movies as @movies" do
-      sign_in user_with_no_movie #suppose to fail, I need to see if index has all movies
+      sign_in user_with_movies #suppose to fail, I need to see if index has all movies
       get :index
-      movie
-      assigns('current_user').movies << movie
-      expect(assigns(:movies)).to eq([movie])
+      movies = user_with_movies.movies
+      expect(assigns(:movies)).to eq(movies)
     end
   end
 
@@ -68,31 +67,32 @@ RSpec.describe MoviesController, type: :controller do
     end
   end
 
-  xdescribe "GET #edit" do
+  describe "GET #edit" do
     it "assigns the requested movie as @movie" do
-      sign_in @user
-      movie
+      sign_in user_with_movies
+      movie = user_with_movies.movies.first
       get :edit, {:id => movie.to_param}
       expect(assigns(:movie)).to eq(movie)
     end
   end
 
-  xdescribe "POST #create" do
+  describe "POST #create" do
     context "with valid params" do
       it "creates a new Movie" do
-        binding.pry
         expect {
           post :create, {:movie => movie }
           }.to change(Movie, :count).by(1)
       end
 
       it "assigns a newly created movie as @movie" do
-        post :create, {:movie => valid_attributes}, valid_session
+        sign_in user_with_no_movie
+        post :create, {:movie => valid_attributes}
         expect(assigns(:movie)).to be_a(Movie)
         expect(assigns(:movie)).to be_persisted
       end
 
       it "redirects to the created movie" do
+        sign_in user_with_no_movie
         post :create, {:movie => valid_attributes}, valid_session
         expect(response).to redirect_to(Movie.last)
       end
@@ -100,11 +100,13 @@ RSpec.describe MoviesController, type: :controller do
 
     context "with invalid params" do
       it "assigns a newly created but unsaved movie as @movie" do
-        post :create, {:movie => invalid_attributes}, valid_session
+        sign_in user_with_no_movie
+        post :create, {:movie => invalid_attributes}
         expect(assigns(:movie)).to be_a_new(Movie)
       end
 
       it "re-renders the 'new' template" do
+        sign_in user_with_no_movie
         post :create, {:movie => invalid_attributes}, valid_session
         expect(response).to render_template("new")
       end
@@ -114,24 +116,29 @@ RSpec.describe MoviesController, type: :controller do
   describe "PUT #update" do
     context "with valid params" do
       let(:new_attributes) {
-        skip("Add a hash of attributes valid for your model")
+        { year: 2016, score: 4.5, actors: "Lily James, Bella Heathcote"}
       }
 
       it "updates the requested movie" do
-        movie = Movie.create! valid_attributes
-        put :update, {:id => movie.to_param, :movie => new_attributes}, valid_session
+        sign_in user_with_movies
+        movie = user_with_movies.movies.first
+        put :update, {:id => movie.to_param, :movie => new_attributes}
         movie.reload
-        skip("Add assertions for updated state")
+        new_attributes.each_pair do |key, value|
+          expect(movie[key]).to eq(value)
+        end
       end
 
-      xit "assigns the requested movie as @movie" do
-        movie = Movie.create! valid_attributes
+      it "assigns the requested movie as @movie" do
+        sign_in user_with_movies
+        movie = user_with_movies.movies.first
         put :update, {:id => movie.to_param, :movie => valid_attributes}, valid_session
         expect(assigns(:movie)).to eq(movie)
       end
 
-      xit "redirects to the movie" do
-        movie = Movie.create! valid_attributes
+      it "redirects to the movie" do
+        sign_in user_with_movies
+        movie = user_with_movies.movies.first
         put :update, {:id => movie.to_param, :movie => valid_attributes}, valid_session
         expect(response).to redirect_to(movie)
       end
@@ -139,13 +146,15 @@ RSpec.describe MoviesController, type: :controller do
 
     context "with invalid params" do
       it "assigns the movie as @movie" do
-        movie = Movie.create! valid_attributes
-        put :update, {:id => movie.to_param, :movie => invalid_attributes}, valid_session
+        sign_in user_with_movies
+        movie = user_with_movies.movies.first
+        put :update, {:id => movie.to_param, :movie => invalid_attributes}
         expect(assigns(:movie)).to eq(movie)
       end
 
       it "re-renders the 'edit' template" do
-        movie = Movie.create! valid_attributes
+        sign_in user_with_movies
+        movie = user_with_movies.movies.first
         put :update, {:id => movie.to_param, :movie => invalid_attributes}, valid_session
         expect(response).to render_template("edit")
       end
@@ -153,15 +162,17 @@ RSpec.describe MoviesController, type: :controller do
   end
 
   describe "DELETE #destroy" do
-    xit "destroys the requested movie" do
-      movie = Movie.create! valid_attributes
+    it "destroys the requested movie" do
+      sign_in user_with_movies
+      movie = user_with_movies.movies.first
       expect {
         delete :destroy, {:id => movie.to_param}, valid_session
       }.to change(Movie, :count).by(-1)
     end
 
-    xit "redirects to the movies list" do
-      movie = Movie.create! valid_attributes
+    it "redirects to the movies list" do
+      sign_in user_with_movies
+      movie = user_with_movies.movies.first
       delete :destroy, {:id => movie.to_param}, valid_session
       expect(response).to redirect_to(movies_url)
     end
