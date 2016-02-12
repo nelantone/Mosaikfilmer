@@ -68,7 +68,7 @@ RSpec.describe MoviesController, type: :controller do
 
       it "redirects to the created movie" do
         sign_in user_with_no_movie
-        post :create, {:movie => valid_attributes}, valid_session
+        post :create, {:movie => valid_attributes}
         expect(response).to redirect_to(Movie.last)
       end
     end
@@ -82,7 +82,7 @@ RSpec.describe MoviesController, type: :controller do
 
       it "re-renders the 'new' template" do
         sign_in user_with_no_movie
-        post :create, {:movie => invalid_attributes}, valid_session
+        post :create, {:movie => invalid_attributes}
         expect(response).to render_template("new")
       end
     end
@@ -107,14 +107,14 @@ RSpec.describe MoviesController, type: :controller do
       it "assigns the requested movie as @movie" do
         sign_in user_with_movies
         movie = user_with_movies.movies.first
-        put :update, {:id => movie.to_param, :movie => valid_attributes}, valid_session
+        put :update, {:id => movie.to_param, :movie => valid_attributes}
         expect(assigns(:movie)).to eq(movie)
       end
 
       it "redirects to the movie" do
         sign_in user_with_movies
         movie = user_with_movies.movies.first
-        put :update, {:id => movie.to_param, :movie => valid_attributes}, valid_session
+        put :update, {:id => movie.to_param, :movie => valid_attributes}
         expect(response).to redirect_to(movie)
       end
     end
@@ -130,7 +130,7 @@ RSpec.describe MoviesController, type: :controller do
       it "re-renders the 'edit' template" do
         sign_in user_with_movies
         movie = user_with_movies.movies.first
-        put :update, {:id => movie.to_param, :movie => invalid_attributes}, valid_session
+        put :update, {:id => movie.to_param, :movie => invalid_attributes}
         expect(response).to render_template("edit")
       end
     end
@@ -141,14 +141,14 @@ RSpec.describe MoviesController, type: :controller do
       sign_in user_with_movies
       movie = user_with_movies.movies.first
       expect {
-        delete :destroy, {:id => movie.to_param}, valid_session
+        delete :destroy, {:id => movie.to_param}
       }.to change(Movie, :count).by(-1)
     end
 
     it "redirects to the movies list" do
       sign_in user_with_movies
       movie = user_with_movies.movies.first
-      delete :destroy, {:id => movie.to_param}, valid_session
+      delete :destroy, {:id => movie.to_param}
       expect(response).to redirect_to(movies_url)
     end
   end
