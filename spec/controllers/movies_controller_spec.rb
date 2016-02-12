@@ -22,15 +22,15 @@ RSpec.describe MoviesController, type: :controller do
   # This should return the minimal set of attributes required to create a valid
   # Movie. As you add validations to Movie, be sure to
   # adjust the attributes here as well.
-  before :each do
-    @user = FactoryGirl.create(:user)
-  end
+  let(:user_with_no_movie) { FactoryGirl.create(:user) }
+  let(:user_with_movies) { FactoryGirl.create(:user_with_movies) }
 
   let(:movie) { FactoryGirl.create(:movie) }
+  let(:movies) { FactoryGirl.create_list(:movie, 5) }
 
-  let(:valid_attributes) {
-    FactoryGirl.build(:movie).attributes
-  }
+  # let(:valid_attributes) {
+  #   FactoryGirl.build(:movie).attributes
+  # }
 
   let(:invalid_attributes) {
     skip("Add a hash of attributes invalid for your model")
@@ -43,7 +43,7 @@ RSpec.describe MoviesController, type: :controller do
 
   describe "GET #index" do
     it "assigns all movies as @movies" do
-      sign_in @user
+      sign_in user_with_no_movie #suppose to fail, I need to see if index has all movies
       get :index
       movie
       assigns('current_user').movies << movie
@@ -53,10 +53,8 @@ RSpec.describe MoviesController, type: :controller do
 
   describe "GET #show" do
     it "assigns the requested movie as @movie" do
-      sign_in @user
-      get :index #problem, assign not initialized
-      movie
-      assigns('current_user').movies << movie
+     sign_in user_with_movies
+      movie = user_with_movies.movies.first
       get :show, {:id => movie.to_param }
       expect(assigns(:movie)).to eq(movie)
     end
@@ -64,7 +62,7 @@ RSpec.describe MoviesController, type: :controller do
 
   describe "GET #new" do
     it "assigns a new movie as @movie" do
-      sign_in @user
+      sign_in user_with_no_movie
       get :new, {}
       expect(assigns(:movie)).to be_a_new(Movie)
     end
