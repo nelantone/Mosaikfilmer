@@ -5,7 +5,7 @@ class MoviesController < ApplicationController
   # GET /movies
   # GET /movies.json
   def index
-    @movies = current_user.movies.all
+    @movies = current_user.movies.order(:score).all
   end
 
   def preview

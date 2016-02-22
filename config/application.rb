@@ -21,6 +21,9 @@ module MosaikFilmer
     # config.i18n.default_locale = :de
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
+    Bundler.require(*Rails.groups)
+
+    Dotenv::Railtie.load
     config.active_record.raise_in_transactional_callbacks = true
   end
 end

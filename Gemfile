@@ -26,8 +26,10 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Access manager
 gem 'devise', '~> 3.5', '>= 3.5.3'
 # upload resize view images, managers
-gem 'carrierwave', '~> 0.10.0'
+gem 'carrierwave', :github => 'carrierwaveuploader/carrierwave'
 gem 'rmagick', '~> 2.15', '>= 2.15.4'
+#GEm for S3
+gem 'fog-aws'
 # To sort tables
 gem 'jquery-tablesorter', '~> 1.20', '>= 1.20.3'
 #Rails Fixture Replacement
@@ -43,7 +45,10 @@ gem 'country_select', '~> 2.5', '>= 2.5.1'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
-  gem 'pg',             '0.17.1'
+gem 'pg',             '0.17.1'
+# gem to simplify enviroment variables
+gem 'dotenv-rails', :groups => [:development, :test]
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
