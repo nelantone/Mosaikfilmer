@@ -77,16 +77,16 @@ If you have some errors or problems,  please copy/paste the error in [Stack-over
 
 ##Version
 
-###Version 0.1 (Basic):
+###Version 0.2 (Basic):
 * Front-End with Bootstrap
 * Database with Postgresql
 * User  authentication with Devise
 * Scaffold, models &controllers
 * Rspec Movies model an controller tests
 * Front-end implementation
+* Image uploads with S3*(Heroku didn't support it).
 
 ###Pending to Fix and for next versions:
-*  Image uploads broken ( Heroku clear all uploaded images  every few hours) S3 with Amazon is a possible solution.
 *  Fix, the Sort the ''Movie List'' table(only uploads when refreshing the page)
 *  Allow send email confirmation, reset and send password the given email.
 *  Sort "Mosaik list index" per score, year etc....
