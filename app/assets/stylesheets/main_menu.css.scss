@@ -1,26 +1,31 @@
 .navbar-custom {
-    background-color:#FF3333;
+  background-color: rgba(255,200,51,1);
 }
 
 .btn-xlarge {
-    color: #990000;
-    &:visited {
-    color: #990000;
-  }
+  color: #990000;
+  &:visited {
+  color: #990000;
+}
 
+&:hover {
+  color: #FFCC66;
+}
   &:hover {
     color: #FFCC66;
+    background-color: rgba(255,200,51,1);
+}
+  padding: 9px 18px;
+  font-size: 31px;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  -webkit-border-radius: 0px;
+     -moz-border-radius: 0px;
+          border-radius: 0px;
   }
-    &:hover {
-    color: #FFCC66;
-    background-color: #FF3333;
-  }
-    padding: 9px 18px;
-    font-size: 31px;
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto;
-    -webkit-border-radius: 0px;
-       -moz-border-radius: 0px;
-            border-radius: 0px;
-    }
+
+
+.btn-xlarge:hover {
+    color: #FF3333;
+}
